@@ -2,12 +2,13 @@ from flask import Flask, request, jsonify, g
 from flask_restful import Resource, Api
 import sqlite3
 import jwt
+import os
 
 app = Flask(__name__)
 api = Api(app)
 
 # Secret key for JWT - should be kept secret and safe
-SECRET_KEY = "your_jwt_secret_key"
+SECRET_KEY = os.getenv('JWT_SECRET_KEY')
 
 # Database setup
 DATABASE = "todos.db"
@@ -108,10 +109,10 @@ class DeleteTodo(Resource):
         return {"message": "Todo deleted"}, 200
 
 
-api.add_resource(Status, "/status")
-api.add_resource(AddTodo, "/add_todo")
-api.add_resource(GetTodos, "/get_todos")
-api.add_resource(DeleteTodo, "/delete_todo/<int:todo_id>")
+api.add_resource(Status, "/todos/status")
+api.add_resource(AddTodo, "/todos/add_todo")
+api.add_resource(GetTodos, "/todos/get_todos")
+api.add_resource(DeleteTodo, "/todos/delete_todo/<int:todo_id>")
 
 if __name__ == "__main__":
     initialize_database()

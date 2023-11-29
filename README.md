@@ -6,6 +6,15 @@ Welcome to TaskNest, a monorepo workspace dedicated to building and managing mic
 
 TaskNest includes the following services:
 
+## Environment Variables
+
+The application uses the following environment variables:
+
+- `JWT_SECRET_KEY`: Your JWT secret key. This is used to sign and verify JWT tokens for authentication.
+- `PORT`: The port number on which the application runs.
+
+Please ensure these environment variables are set in your environment before running the application.
+
 ### 1. User Service
 
 - **Description**: Manages user authentication, creation, and management.

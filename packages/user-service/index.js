@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 const saltRounds = 10;
-const secretKey = "your_secret_key"; // Ideally, store this in an environment variable
+const secretKey = process.env.JWT_SECRET_KEY;
 
 // Create a database
 const db = new sqlite3.Database("users.db", (err) => {
