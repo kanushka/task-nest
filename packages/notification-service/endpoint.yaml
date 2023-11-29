@@ -1,0 +1,50 @@
+openapi: 3.0.0
+info:
+  title: Notification Service API
+  version: 1.0.0
+  description: Simple PHP service for sending notifications via email and checking service status.
+
+servers:
+  - url: http://localhost:8000
+    description: Local development server
+
+paths:
+  /status:
+    get:
+      summary: Check Service Status
+      description: Returns the current status of the notification service.
+      responses:
+        '200':
+          description: Service is running
+          content:
+            text/plain:
+              example: Notification Service is running
+
+  /send-notification:
+    post:
+      summary: Send an Email Notification
+      description: Sends an email notification to a specified address.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: The email address of the recipient.
+                subject:
+                  type: string
+                  description: The subject of the email.
+                message:
+                  type: string
+                  description: The message content of the email.
+      responses:
+        '200':
+          description: Email sent successfully
+        '400':
+          description: Invalid input or email address
+        '500':
+          description: Internal server error
