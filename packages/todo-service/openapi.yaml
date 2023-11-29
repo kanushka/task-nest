@@ -5,6 +5,16 @@ info:
   description: API for managing todos in a Todo application
 
 paths:
+  /status:
+    get:
+      summary: Check Service Status
+      description: Returns the current status of the service.
+      responses:
+        '200':
+          description: Service is running
+          content:
+            text/plain:
+              example: Notification Service is running
   /add_todo:
     post:
       summary: Add a new todo item

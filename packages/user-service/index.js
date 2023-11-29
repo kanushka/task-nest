@@ -40,7 +40,7 @@ function initializeDatabase() {
 }
 
 // Endpoint server status and database connection status
-app.get("/status", (req, res) => {
+app.get("/users/status", (req, res) => {
     db.get("SELECT 1", (err) => {
         if (err) {
             res.status(500).send({ status: "ERROR", message: "Database connection error", error: err.message });
@@ -50,7 +50,7 @@ app.get("/status", (req, res) => {
 });
 
 // Endpoint to create a new user
-app.post("/create-user", async (req, res) => {
+app.post("/users/create-user", async (req, res) => {
     const { username, password } = req.body;
 
     if (!username || !password) {
@@ -70,7 +70,7 @@ app.post("/create-user", async (req, res) => {
 });
 
 // Endpoint to login a user
-app.post("/login", (req, res) => {
+app.post("/users/login", (req, res) => {
     const { username, password } = req.body;
 
     if (!username || !password) {

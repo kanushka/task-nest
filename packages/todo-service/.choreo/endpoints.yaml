@@ -1,0 +1,9 @@
+version: 0.1
+
+endpoints:
+- name: Todo Service
+  port: 3000
+  type: REST
+  networkVisibility: Public
+  context: /todos
+  schemaFilePath: openapi.yaml
