@@ -20,7 +20,7 @@ paths:
             text/plain:
               example: Notification Service is running
 
-  /send-notification:
+  /send:
     post:
       summary: Send an Email Notification
       description: Sends an email notification to a specified address.

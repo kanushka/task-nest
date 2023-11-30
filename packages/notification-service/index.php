@@ -3,10 +3,10 @@
 // Simple router
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-if ($path == "/status") {
+if ($path == "/notifications/status") {
     // Status endpoint
     echo "Notification Service is running";
-} elseif ($path == "/send-notification" && $_SERVER['REQUEST_METHOD'] == 'POST') {
+} elseif ($path == "/notifications/send" && $_SERVER['REQUEST_METHOD'] == 'POST') {
     // Send notification endpoint
     include 'sendEmail.php';
 } else {
