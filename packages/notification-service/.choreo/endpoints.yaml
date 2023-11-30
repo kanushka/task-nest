@@ -4,6 +4,6 @@ endpoints:
 - name: Notification Service
   port: 7000
   type: REST
-  networkVisibility: Public
+  networkVisibility: Organization
   context: /notifications
   schemaFilePath: openapi.yaml
