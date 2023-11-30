@@ -63,7 +63,7 @@ def insert_db(query, args=()):
 def verify_token(token):
     try:
         # Test user service - need to implement correctly
-        requests.get("http://user-service-885045017:3000/users/status")
+        requests.get("http://user-service-885045017:4000/users/status")
         payload = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
         return payload["user_id"]
     except jwt.PyJWTError:

@@ -1,7 +1,7 @@
 const axios = require("axios");
 
 const projectServices = [
-    { name: "User Service (project)", url: "http://user-service-885045017:3000/users" },
+    { name: "User Service (project)", url: "http://user-service-885045017:4000/users" },
     { name: "Todo Service (project)", url: "http://todo-service-1123905988:5000/todos" },
     { name: "Notification Service (project)", url: "http://notification-service-2269431989:7000/notifications" },
 ];

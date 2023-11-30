@@ -2,7 +2,7 @@ version: 0.1
 
 endpoints:
 - name: User Service
-  port: 3000
+  port: 4000
   type: REST
   networkVisibility: Public
   context: /users

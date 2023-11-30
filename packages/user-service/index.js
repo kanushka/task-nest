@@ -68,7 +68,7 @@ app.post("/users/create-user", async (req, res) => {
         }
 
         // Test user service - need to implement correctly
-        axios.get("http://user-service-885045017:3000/users/status")
+        axios.get("http://user-service-885045017:4000/users/status")
 
         res.status(201).send({ message: "User created", userId: this.lastID });
     });
