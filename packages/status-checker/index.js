@@ -38,7 +38,6 @@ function checkServiceStatus(service) {
 }
 
 // Check the status of each service
-log(">>> Checking service project endpoint statuses...");
+log(">>> Checking service statuses...");
 projectServices.forEach((service) => checkServiceStatus(service));
-log(">>> Checking service public endpoint statuses...");
 devPublicServices.forEach((service) => checkServiceStatus(service));
