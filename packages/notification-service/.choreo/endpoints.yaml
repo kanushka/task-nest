@@ -2,7 +2,7 @@ version: 0.1
 
 endpoints:
 - name: Notification Service
-  port: 3000
+  port: 7000
   type: REST
   networkVisibility: Public
   context: /notifications
