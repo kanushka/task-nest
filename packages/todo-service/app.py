@@ -3,12 +3,13 @@ from flask_restful import Resource, Api
 import sqlite3
 import jwt
 import os
+import requests
 
 app = Flask(__name__)
 api = Api(app)
 
 # Secret key for JWT - should be kept secret and safe
-SECRET_KEY = os.getenv('JWT_SECRET_KEY')
+SECRET_KEY = os.getenv("JWT_SECRET_KEY")
 
 # Database setup
 DATABASE = "todos.db"
@@ -61,6 +62,8 @@ def insert_db(query, args=()):
 # Utility function for token verification
 def verify_token(token):
     try:
+        # Test user service - need to implement correctly
+        requests.get("http://user-service-885045017:3000/users/status")
         payload = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
         return payload["user_id"]
     except jwt.PyJWTError:
@@ -84,6 +87,8 @@ class AddTodo(Resource):
         todo_id = insert_db(
             "INSERT INTO todos (user_id, text) VALUES (?, ?)", [user_id, todo_text]
         )
+        # Test notification service - need to implement correctly
+        requests.get("http://notification-service-2269431989:7000/notifications/status")
         return {"todo_id": todo_id}, 201
 
 

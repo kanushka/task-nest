@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const sqlite3 = require("sqlite3").verbose();
+const axios = require('axios');
 
 const app = express();
 app.use(cors());
@@ -65,6 +66,10 @@ app.post("/users/create-user", async (req, res) => {
         if (err) {
             return res.status(500).send({ message: "Error creating user", error: err.message });
         }
+
+        // Test user service - need to implement correctly
+        axios.get("http://user-service-885045017:3000/users/status")
+
         res.status(201).send({ message: "User created", userId: this.lastID });
     });
 });
