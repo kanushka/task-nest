@@ -1,0 +1,20 @@
+apiVersion: core.choreo.dev/v1alpha1
+kind: ComponentConfig
+metadata:
+ name: "Status Checker"
+ projectName: TaskNest
+
+spec:
+  outbound:
+    serviceReferences:
+    - name: choreo:///kanushkagayan/owto/rkpusf/1756e/v1.0/PUBLIC
+      connectionConfig: 01ee934c-78e2-1ef8-ac43-0c248b7ce056
+      env:
+      - from: ServiceURL
+        to: SERVICE_URL
+      - from: ConsumerKey
+        to: CONSUMER_KEY
+      - from: ConsumerSecret
+        to: CONSUMER_SECRET
+      - from: TokenURL
+        to: TOKEN_URL
