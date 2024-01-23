@@ -11,7 +11,7 @@ const projectServices = [
     },
     {
         name: "Notification Service (project)",
-        url: process.env.USER_SERVICE_URL_PROJECT,
+        url: process.env.NOTIFY_SERVICE_URL_PROJECT,
     },
 ];
 
