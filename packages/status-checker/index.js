@@ -1,9 +1,18 @@
 const axios = require("axios");
 
 const projectServices = [
-    { name: "User Service (project)", url: "http://user-service-885045017:4000/users" },
-    { name: "Todo Service (project)", url: "http://todo-service-1123905988:5000/todos" },
-    { name: "Notification Service (project)", url: "http://notification-service-2269431989:7000/notifications" },
+    {
+        name: "User Service (project)",
+        url: process.env.USER_SERVICE_URL_PROJECT,
+    },
+    {
+        name: "Todo Service (project)",
+        url: process.env.TODO_SERVICE_URL_PROJECT,
+    },
+    {
+        name: "Notification Service (project)",
+        url: process.env.USER_SERVICE_URL_PROJECT,
+    },
 ];
 
 const devPublicServices = [
