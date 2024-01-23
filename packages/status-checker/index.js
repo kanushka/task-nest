@@ -25,8 +25,8 @@ const devPublicServices = [
         url: process.env.TODO_SERVICE_URL_PUBLIC,
     },
     {
-        name: "Notification Service (public)",
-        url: process.env.NOTIFY_SERVICE_URL_PUBLIC,
+        name: "Notification Service (Organization)",
+        url: process.env.NOTIFY_SERVICE_URL_ORG,
     },
 ];
 
