@@ -3,30 +3,24 @@ const axios = require("axios");
 const projectServices = [
     {
         name: "User Service (project)",
-        url: process.env.USER_SERVICE_URL_PROJECT,
+        url: process.env.USER_SERVICE_URL,
+        key: process.env.USER_CONSUMER_KEY,
+        secret: process.env.USER_CONSUMER_SECRET,
+        token: process.env.USER_TOKEN_URL,
     },
     {
         name: "Todo Service (project)",
-        url: process.env.TODO_SERVICE_URL_PROJECT,
+        url: process.env.TODO_SERVICE_URL,
+        key: process.env.TODO_CONSUMER_KEY,
+        secret: process.env.TODO_CONSUMER_SECRET,
+        token: process.env.TODO_TOKEN_URL,
     },
     {
         name: "Notification Service (project)",
-        url: process.env.NOTIFY_SERVICE_URL_PROJECT,
-    },
-];
-
-const devPublicServices = [
-    {
-        name: "User Service (public)",
-        url: process.env.USER_SERVICE_URL_PUBLIC,
-    },
-    {
-        name: "Todo Service (public)",
-        url: process.env.TODO_SERVICE_URL_PUBLIC,
-    },
-    {
-        name: "Notification Service (Organization)",
-        url: process.env.NOTIFY_SERVICE_URL_ORG,
+        url: process.env.NOTIFICATION_SERVICE_URL,
+        key: process.env.NOTIFICATION_CONSUMER_KEY,
+        secret: process.env.NOTIFICATION_CONSUMER_SECRET,
+        token: process.env.NOTIFICATION_TOKEN_URL,
     },
 ];
 
@@ -49,11 +43,6 @@ async function checkServiceStatus(service) {
 async function checkAllServiceStatuses() {
     log("Starting status checks");
     for (const service of projectServices) {
-        await checkServiceStatus(service);
-        await new Promise((resolve) => setTimeout(resolve, delay));
-    }
-
-    for (const service of devPublicServices) {
         await checkServiceStatus(service);
         await new Promise((resolve) => setTimeout(resolve, delay));
     }

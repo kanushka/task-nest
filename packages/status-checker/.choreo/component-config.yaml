@@ -7,14 +7,36 @@ metadata:
 spec:
   outbound:
     serviceReferences:
-    - name: choreo:///kanushkagayan/owto/rkpusf/1756e/v1.0/PUBLIC
-      connectionConfig: 01ee934c-78e2-1ef8-ac43-0c248b7ce056
+    - name: choreo:///kanushkagayan/szqf/bhlyvl/a8144/v1.0/PUBLIC
+      connectionConfig: 01eeceee-0404-1680-9388-9bd7416a5bd1
       env:
       - from: ServiceURL
-        to: SERVICE_URL
+        to: USER_SERVICE_URL
       - from: ConsumerKey
-        to: CONSUMER_KEY
+        to: USER_CONSUMER_KEY
       - from: ConsumerSecret
-        to: CONSUMER_SECRET
+        to: USER_CONSUMER_SECRET
       - from: TokenURL
-        to: TOKEN_URL
+        to: USER_TOKEN_URL
+    - name: choreo:///kanushkagayan/szqf/wtgyzl/657df/v1.0/ORGANIZATION
+      connectionConfig: 01eeceed-23e7-15c0-9ba6-f60ff2d6b8c1
+      env:
+      - from: ServiceURL
+        to: NOTIFICATION_SERVICE_URL
+      - from: ConsumerKey
+        to: NOTIFICATION_CONSUMER_KEY
+      - from: ConsumerSecret
+        to: NOTIFICATION_CONSUMER_SECRET
+      - from: TokenURL
+        to: NOTIFICATION_TOKEN_URL
+    - name: choreo:///kanushkagayan/szqf/xfzteu/1756e/v1.0/PUBLIC
+      connectionConfig: 01eeceed-be47-19fe-9164-cd758dda30e5
+      env:
+      - from: ServiceURL
+        to: TODO_SERVICE_URL
+      - from: ConsumerKey
+        to: TODO_CONSUMER_KEY
+      - from: ConsumerSecret
+        to: TODO_CONSUMER_SECRET
+      - from: TokenURL
+        to: TODO_TOKEN_URL
