@@ -42,6 +42,7 @@ async function checkServiceStatus(service) {
 
 async function checkAllServiceStatuses() {
     log("Starting status checks");
+    log("env: " + JSON.stringify(projectServices), "debug");
     for (const service of projectServices) {
         await checkServiceStatus(service);
         await new Promise((resolve) => setTimeout(resolve, delay));
