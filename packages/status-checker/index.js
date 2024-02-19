@@ -1,4 +1,5 @@
 const axios = require("axios");
+const URLSearchParams = require('url').URLSearchParams;
 
 const projectServices = [
     {
@@ -31,6 +32,49 @@ function log(message, type = "INFO") {
     console.log(`[${dateTime}] [${type}] ${message}`);
 }
 
+async function getAccessToken(service) {
+    const serviceURL = service.url;
+    const consumerKey = service.key;
+    const consumerSecret = service.secret;
+    const tokenURL = service.token;
+
+    const clientCredentials = Buffer.from(`<span class="math-inline">\{consumerKey\}\:</span>{consumerSecret}`).toString('base64');
+    const data = new URLSearchParams({ 'grant_type': 'client_credentials' });
+
+    try {
+        const response = await axios.post(tokenURL, data, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': `Basic ${clientCredentials}`
+            }
+        });
+
+        return response.data.access_token;
+    } catch (error) {
+        console.error('Error fetching access token:', error);
+        throw error;
+    }
+}
+
+async function callService(service) {
+    const serviceURL = service.url;
+    const accessToken = await getAccessToken(service);
+
+    try {
+        const response = await axios({
+            method: 'get', // Adjust the HTTP method if needed
+            url: serviceURL + "/status",
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            }
+        });
+
+        log(`${service.name} is up: Response - ${JSON.stringify(response.data)}`); // Handle the service response
+    } catch (error) {
+        console.error('Error calling service:', error);
+    }
+}
+
 async function checkServiceStatus(service) {
     try {
         const response = await axios.get(service.url + "/status");
@@ -44,7 +88,8 @@ async function checkAllServiceStatuses() {
     log("Starting status checks");
     log("env: " + JSON.stringify(projectServices), "debug");
     for (const service of projectServices) {
-        await checkServiceStatus(service);
+        // await checkServiceStatus(service);
+        await callService();
         await new Promise((resolve) => setTimeout(resolve, delay));
     }
 }
