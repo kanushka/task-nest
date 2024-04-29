@@ -3,6 +3,8 @@ const os = require("os");
 const cors = require("cors");
 const { create } = require("domain");
 const faker = require("faker");
+const oauth = require("axios-oauth-client");
+const axios = require("axios");
 
 const app = express();
 app.use(cors());
@@ -34,8 +36,36 @@ app.get("/posts", async (req, res) => {
     res.send(posts);
 });
 
+app.get("/test", async (req, res) => {
+    const getServiceAccessToken = async (envPrefix) => {
+        const consumerKey = process.env[`${envPrefix}_CONSUMER_KEY`];
+        const consumerSecret = process.env[`${envPrefix}_CONSUMER_SECRET`];
+        const tokenUrl = process.env[`${envPrefix}_TOKEN_URL`];
+        
+        const getClientCredentials = oauth.clientCredentials(axios.create(), tokenUrl, consumerKey, consumerSecret);
+        const auth = await getClientCredentials();
+        const accessToken = auth.access_token;
+        
+        return accessToken;
+    };
+    
+    const userServiceURL = process.env[`USER_SERVICE_URL`];
+    const userAccessToken = await getServiceAccessToken("USER");
+    const userResponse = await axios.get(userServiceURL + "/status", {
+        headers: {
+            Authorization: `Bearer ${userAccessToken}`,
+        },
+    });
+
+    const responses = {
+        users: userResponse,
+    };
+
+    res.send(responses);
+});
+
 // Run the server
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8080;
 
 function getLocalIpAddress() {
     const interfaces = os.networkInterfaces();

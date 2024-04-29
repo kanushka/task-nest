@@ -1,0 +1,24 @@
+apiVersion: core.choreo.dev/v1beta1
+kind: ComponentConfig
+spec:
+  inbound:
+    - name: Post Service
+      port: 8080
+      type: REST
+      networkVisibility: Public
+      context: /
+      schemaFilePath: openapi.yaml
+  outbound:
+      serviceReferences:
+      - name: choreo:///kanushkagayan/owto/cmottt/a8144/v1/PUBLIC
+        connectionConfig: 01ef061e-87dd-17d8-b528-4e8262aefc6c
+        env:
+        - from: ServiceURL
+          to: USER_SERVICE_URL
+        - from: ConsumerKey
+          to: USER_CONSUMER_KEY
+        - from: ConsumerSecret
+          to: USER_CONSUMER_SECRET
+        - from: TokenURL
+          to: USER_TOKEN_URL
+

@@ -2,8 +2,6 @@ openapi: "3.0.0"
 info:
   version: "1.0.0"
   title: "Posts App"
-servers:
-  - url: "http://localhost:8000"
 paths:
   /:
     get:
