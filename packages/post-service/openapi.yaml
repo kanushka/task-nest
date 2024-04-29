@@ -1,0 +1,17 @@
+openapi: "3.0.0"
+info:
+  version: "1.0.0"
+  title: "Posts App"
+servers:
+  - url: "http://localhost:8000"
+paths:
+  /:
+    get:
+      responses:
+        '200':
+          description: "Posts app is up and running"
+  /posts:
+    get:
+      responses:
+        '200':
+          description: "Returns a list of posts"
