@@ -50,6 +50,11 @@ app.get("/users/status", (req, res) => {
     res.send({ status: "OK", message: "User Service is up and running" });
 });
 
+// Endpoint server health
+app.get("/users/health", (req, res) => {
+    res.send({ status: "OK"});
+});
+
 // Endpoint to create a new user
 app.post("/users/create-user", async (req, res) => {
     const { username, password } = req.body;
